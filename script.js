@@ -501,7 +501,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".bg-stars");
   if (!container) return;
 
-  const STAR_COUNT = 190; // total number of stars to render
+  const STAR_COUNT = 250; // total number of stars to render
 
   for (let i = 0; i < STAR_COUNT; i++) {
     const star = document.createElement("span");
