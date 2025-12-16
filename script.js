@@ -2,7 +2,7 @@
      GOOGLE REVIEWS SLIDER (Testimonials Section)
   ========================================================== */
 // Google Maps review page link
-const googleMapsUrl = "https://maps.app.goo.gl/dcXpVWVAwmPAqEXf9";
+const googleMapsUrl = "https://maps.app.goo.gl/2CMEU3T78qhnxiZx9";
 
 const googleReviews = document.getElementById("googleReviews");
 const dotsContainer = document.getElementById("reviewDots");
@@ -677,6 +677,7 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(star);
   }
 });
+
 
 
 
