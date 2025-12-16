@@ -41,6 +41,13 @@ async function loadGoogleReviews() {
       date: "1 month ago",
       link: googleMapsUrl,
     },
+    {
+      rating: 5,
+      text: "Everything was incredible from start to finish. The food was not only beautifully presented but also absolutely delicious. So many guests commented on how amazing everything tasted. The entire experience was smooth, seamless, and very professional, which made hosting so much easier and stress free. I would absolutely work with them again and highly recommend them to anyone looking for exceptional catering and a great overall experience.",
+      author: "Sonia B.",
+      date: "1 day ago",
+      link: googleMapsUrl,
+    },
   ];
 
   const filledStar = "&#9733;";
@@ -105,7 +112,7 @@ function initReviewSlider() {
 
   setInterval(() => {
     goTo((current + 1) % cards.length);
-  }, 7000);
+  }, 12000);
 }
 
 loadGoogleReviews();
@@ -670,5 +677,6 @@ document.addEventListener("DOMContentLoaded", () => {
     container.appendChild(star);
   }
 });
+
 
 
