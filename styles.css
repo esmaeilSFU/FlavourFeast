@@ -1798,3 +1798,22 @@ textarea {
     transform: translate(-50%, -50%) scale(0.3);
   }
 }
+
+.credit {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.credit a {
+  text-decoration: none;
+  font-weight: 500;
+  background: linear-gradient(45deg, #d4af37, #f6e27a, #d4af37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: opacity 0.3s ease;
+}
+
+.credit a:hover {
+  opacity: 0.7;
+}
+
