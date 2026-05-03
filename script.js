@@ -671,36 +671,36 @@ document.addEventListener("DOMContentLoaded", () => {
    - Generates twinkling "diamond" stars behind the layout
    - Covers the full document height (not just the first viewport)
 =================================================================== */
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector(".bg-stars");
-  if (!container) return;
+// document.addEventListener("DOMContentLoaded", () => {
+//   const container = document.querySelector(".bg-stars");
+//   if (!container) return;
 
-  const STAR_COUNT = 240; // total number of stars to render
+//   const STAR_COUNT = 240; // total number of stars to render
 
-  for (let i = 0; i < STAR_COUNT; i++) {
-    const star = document.createElement("span");
-    star.classList.add("bg-star");
+//   for (let i = 0; i < STAR_COUNT; i++) {
+//     const star = document.createElement("span");
+//     star.classList.add("bg-star");
 
-    const pageHeight = document.body.scrollHeight;
+//     const pageHeight = document.body.scrollHeight;
 
-    // Random position across full page
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * pageHeight;
+//     // Random position across full page
+//     const x = Math.random() * window.innerWidth;
+//     const y = Math.random() * pageHeight;
 
-    // Random star size: between 2px and 6px
-    const size = 2 + Math.random() * 4;
-    star.style.width = `${size}px`;
-    star.style.height = `${size}px`;
+//     // Random star size: between 2px and 6px
+//     const size = 2 + Math.random() * 4;
+//     star.style.width = `${size}px`;
+//     star.style.height = `${size}px`;
 
-    // Random animation duration (3-8s) and delay (0-6s)
-    const duration = 3 + Math.random() * 5;
-    const delay = Math.random() * 6;
+//     // Random animation duration (3-8s) and delay (0-6s)
+//     const duration = 3 + Math.random() * 5;
+//     const delay = Math.random() * 6;
 
-    star.style.left = `${x}px`;
-    star.style.top = `${y}px`;
-    star.style.animationDuration = `${duration}s`;
-    star.style.animationDelay = `${delay}s`;
+//     star.style.left = `${x}px`;
+//     star.style.top = `${y}px`;
+//     star.style.animationDuration = `${duration}s`;
+//     star.style.animationDelay = `${delay}s`;
 
-    container.appendChild(star);
-  }
-});
+//     container.appendChild(star);
+//   }
+// });
