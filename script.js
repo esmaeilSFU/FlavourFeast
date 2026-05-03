@@ -300,24 +300,24 @@ document.addEventListener("DOMContentLoaded", () => {
      HERO SLIDESHOW
      - Fades between background images every 5 seconds
   =================================================================== */
-  const heroSection = document.querySelector(".hero");
-  const heroImages = ["assets/images/hero/01.png", "assets/images/hero/02.png"];
-  let currentHeroIndex = 0;
+  // const heroSection = document.querySelector(".hero");
+  // const heroImages = ["assets/images/hero/01.png", "assets/images/hero/02.png"];
+  // let currentHeroIndex = 0;
 
-  if (heroSection) {
-    // Preload images for smoother transition
-    heroImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
+  // if (heroSection) {
+  //   // Preload images for smoother transition
+  //   heroImages.forEach((src) => {
+  //     const img = new Image();
+  //     img.src = src;
+  //   });
 
-    heroSection.style.backgroundImage = `url('${heroImages[0]}')`;
+  //   heroSection.style.backgroundImage = `url('${heroImages[0]}')`;
 
-    setInterval(() => {
-      currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
-      heroSection.style.backgroundImage = `url('${heroImages[currentHeroIndex]}')`;
-    }, 5000);
-  }
+  //   setInterval(() => {
+  //     currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
+  //     heroSection.style.backgroundImage = `url('${heroImages[currentHeroIndex]}')`;
+  //   }, 5000);
+  // }
 
   /* ===================================================================
      MENU MODAL (Detailed package menus)
