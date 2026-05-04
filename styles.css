@@ -1817,3 +1817,31 @@ textarea {
   opacity: 0.7;
 }
 
+.terms-list {
+  padding-left: 18px;
+  line-height: 1.6;
+}
+
+.terms-list li {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+/* زیرلیست */
+.sub-list {
+  margin-top: 5px;
+  padding-left: 18px;
+}
+
+.sub-list li {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* تیتر سکشن */
+.section-title {
+  margin-top: 12px;
+  font-weight: bold;
+  color: #444;
+  list-style: none;
+}
