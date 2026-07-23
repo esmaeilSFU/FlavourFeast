@@ -547,6 +547,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (form) {
     const submitBtn = form.querySelector("button[type='submit']");
 
+    // EmailJS config (client-side email sending, no backend needed)
+    // TODO: replace with your real EmailJS Service ID and Template ID
+    const EMAILJS_SERVICE_ID = "service_20cdcde";
+    const EMAILJS_TEMPLATE_ID = "template_ns7bdis";
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       clearFormErrors();
@@ -592,33 +597,25 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Valid form: send to Formspree endpoint declared in the HTML form action.
-      const formData = new FormData(form);
+      // Valid form: send via EmailJS (client-side, no backend needed).
       submitBtn?.setAttribute("disabled", "true");
       showFormMessage("pending", "Sending your request...");
 
       try {
-        const response = await fetch(form.action, {
-          method: form.method || "POST",
-          headers: { Accept: "application/json" },
-          body: formData,
-        });
-
-        if (response.ok) {
-          form.reset();
-          clearFormErrors();
-          showFormMessage(
-            "success",
-            "Thank you! We will contact you within 24 hours."
-          );
-        } else {
-          const data = await response.json().catch(() => ({}));
-          const errorMsg =
-            data?.errors?.[0]?.message ||
-            "Oops! Something went wrong. Please try again later.";
-          showFormMessage("error", errorMsg);
+        if (typeof emailjs === "undefined") {
+          throw new Error("EmailJS not loaded");
         }
+
+        await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
+
+        form.reset();
+        clearFormErrors();
+        showFormMessage(
+          "success",
+          "Thank you! We will contact you within 24 hours."
+        );
       } catch (error) {
+        console.error("EmailJS error:", error);
         showFormMessage(
           "error",
           "We couldn't send your request. Please check your internet connection and try again."

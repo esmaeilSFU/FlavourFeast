@@ -10,6 +10,14 @@
 
   gtag('config', 'G-RPNKF84ZMS');
 </script>
+
+  <!-- EmailJS (client-side email sending, no backend needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // TODO: replace with your real EmailJS Public Key (Account > General)
+    emailjs.init({ publicKey: "C9y_EAon-E-B2ocgC" });
+  </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
@@ -845,13 +853,7 @@
           </a>
         </div>
 
-        <form
-          id="quote-form"
-          action="https://formspree.io/f/mrbnlgjb"
-          method="POST"
-          novalidate
-        >
-          <!-- Formspree subject for inbox -->
+        <form id="quote-form" novalidate>
           <input
             type="hidden"
             name="_subject"
@@ -1155,10 +1157,10 @@
               <span>Item</span><span>Pieces</span><span>Price</span>
             </div>
             <div class="menu-detail-row">
-              <span>Rainbow Roll</span><span>30</span><span>$74</span>
+              <span>Rainbow Roll</span><span>30</span><span>$80</span>
             </div>
             <div class="menu-detail-row">
-              <span>Silly Burger</span><span>20</span><span>$89</span>
+              <span>Silly Burger</span><span>20</span><span>$100</span>
             </div>
             <div class="menu-detail-row">
               <span>Mr. Cheese Ball</span><span>20</span><span>$68</span>
@@ -1314,6 +1316,10 @@
               <span>Mini Falafel with Tahini Sauce</span><span>20</span
               ><span>-</span>
             </div>
+            <div class="menu-detail-row">
+              <span>Chicken Kebab Skewers</span><span>20</span
+              ><span>-</span>
+            </div>
           </div>
           <br /><br />
           <div class="menu-detail-photos">
@@ -1431,10 +1437,16 @@
             </div>
             <div class="menu-detail-row">
               <span>Mini Falafel Balls with Tahini Dip</span><span>20</span
-              ><span>$79</span>
+              ><span>$80</span>
             </div>
             <div class="menu-detail-row">
               <span>Vegetable Samosa</span><span>20</span><span>-</span>
+            </div>
+            <div class="menu-detail-row">
+              <span>Pesto Pasta Salad Cups</span><span>20</span><span>-</span>
+            </div>
+            <div class="menu-detail-row">
+              <span>Veggie Cups</span><span>20</span><span>-</span>
             </div>
           </div>
 
