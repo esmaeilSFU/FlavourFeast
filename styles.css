@@ -1171,6 +1171,26 @@ textarea {
   cursor: pointer;
 }
 
+.radio-options {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.4rem;
+}
+
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+  cursor: pointer;
+}
+
 .checkbox-group input[type="checkbox"] {
   cursor: pointer;
 }

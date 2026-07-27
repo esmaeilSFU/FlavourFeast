@@ -982,6 +982,72 @@
             </div>
           </div>
 
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label id="allergies-label"
+                >Do you or any of your guests have any food allergies or
+                dietary restrictions? *</label
+              >
+              <div
+                class="radio-options"
+                role="radiogroup"
+                aria-labelledby="allergies-label"
+              >
+                <label class="radio-option"
+                  ><input
+                    type="radio"
+                    name="allergies"
+                    value="Yes"
+                    required
+                  />
+                  Yes</label
+                >
+                <label class="radio-option"
+                  ><input type="radio" name="allergies" value="No" required />
+                  No</label
+                >
+              </div>
+              <span class="field-error"></span>
+            </div>
+          </div>
+
+          <div class="form-row" id="allergy-details-row" style="display: none">
+            <div class="form-group full-width">
+              <label for="allergy-details"
+                >Please specify the allergy or dietary restriction *</label
+              >
+              <input
+                type="text"
+                id="allergy-details"
+                name="allergy-details"
+                placeholder="e.g. peanut allergy, vegan, gluten-free"
+                disabled
+              />
+              <span class="field-error"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label id="halal-label">Do you require halal food?</label>
+              <div
+                class="radio-options"
+                role="radiogroup"
+                aria-labelledby="halal-label"
+              >
+                <label class="radio-option"
+                  ><input type="radio" name="halal" value="Yes" />
+                  Yes</label
+                >
+                <label class="radio-option"
+                  ><input type="radio" name="halal" value="No" />
+                  No</label
+                >
+              </div>
+              <span class="field-error"></span>
+            </div>
+          </div>
+
           <!-- Terms link -->
           <div class="terms-row" style="margin-bottom: 0.5rem">
             <a href="#" id="open-terms" class="terms-link"

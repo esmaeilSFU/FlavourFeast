@@ -552,6 +552,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const EMAILJS_SERVICE_ID = "service_20cdcde";
     const EMAILJS_TEMPLATE_ID = "template_ns7bdis";
 
+    // Allergy/dietary restriction: show + enable the "specify" field only
+    // when the guest confirms they (or a guest) have one.
+    const allergyDetailsRow = document.getElementById("allergy-details-row");
+    const allergyDetailsInput = document.getElementById("allergy-details");
+    form.querySelectorAll('input[name="allergies"]').forEach((radio) => {
+      radio.addEventListener("change", () => {
+        const isYes =
+          form.querySelector('input[name="allergies"]:checked')?.value ===
+          "Yes";
+        if (allergyDetailsRow) {
+          allergyDetailsRow.style.display = isYes ? "" : "none";
+        }
+        if (allergyDetailsInput) {
+          allergyDetailsInput.disabled = !isYes;
+          if (!isYes) {
+            allergyDetailsInput.value = "";
+            setFieldError(allergyDetailsInput, "");
+          }
+        }
+      });
+    });
+
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       clearFormErrors();
@@ -581,6 +603,24 @@ document.addEventListener("DOMContentLoaded", () => {
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (emailInput.value && !emailPattern.test(emailInput.value)) {
         setFieldError(emailInput, "Invalid email");
+        hasError = true;
+      }
+
+      // Allergy / dietary restriction question (required)
+      const allergiesChecked = form.querySelector(
+        'input[name="allergies"]:checked'
+      );
+      if (!allergiesChecked) {
+        setFieldError(
+          form.querySelector('input[name="allergies"]'),
+          "Please select an option"
+        );
+        hasError = true;
+      } else if (
+        allergiesChecked.value === "Yes" &&
+        !allergyDetailsInput?.value.trim()
+      ) {
+        setFieldError(allergyDetailsInput, "Please specify");
         hasError = true;
       }
 
