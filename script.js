@@ -140,6 +140,46 @@ function smoothScrollTo(targetSelector) {
    - All main interactions are initialized on DOMContentLoaded
 =================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
+  /* ===================================================================
+     DYNAMIC GALLERY RENDER
+     - Builds the gallery grid from window.FLAVOURFEAST_GALLERY_ITEMS
+       (auto-generated in gallery-data.js by scripts/generate-gallery-data.js,
+       run automatically by .github/workflows/update-gallery.yml on every
+       push that touches assets/images/ or assets/videos/).
+     - Must run before the DOM queries below so lightbox binding, reveal
+       animation, and lazy-loading all pick up the rendered items.
+  =================================================================== */
+  (function renderGallery() {
+    const grid = document.getElementById("galleryGrid");
+    const items = window.FLAVOURFEAST_GALLERY_ITEMS;
+    if (!grid || !Array.isArray(items)) return;
+
+    grid.innerHTML = "";
+    items.forEach((item) => {
+      const isVideo = item.type === "video";
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = `gallery-item gallery-item--${isVideo ? "video" : "img"} reveal`;
+      btn.setAttribute("role", "listitem");
+      btn.dataset.lightbox = item.src;
+      if (isVideo) btn.dataset.type = "video";
+
+      const img = document.createElement("img");
+      img.src = isVideo ? item.previewSrc : item.src;
+      img.alt = item.alt || "";
+      btn.appendChild(img);
+
+      if (isVideo) {
+        const playIcon = document.createElement("span");
+        playIcon.className = "play-icon";
+        btn.appendChild(playIcon);
+      }
+
+      grid.appendChild(btn);
+    });
+  })();
+
   /* ---------- Cached DOM references ---------- */
   const header = document.querySelector(".site-header");
   const navToggle = document.querySelector(".nav-toggle");
@@ -149,9 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navDropdown = document.querySelector(".nav-dropdown");
   const navDropdownToggle =
     navDropdown?.querySelector(".nav-dropdown-toggle") || null;
-  const galleryItems = document.querySelectorAll(
-    ".gallery-item[data-lightbox]"
-  );
+  const galleryGrid = document.getElementById("galleryGrid");
   const lightbox = document.querySelector(".lightbox");
   const lightboxContent = lightbox?.querySelector(".lightbox-content") || null;
   const lightboxCloseEls =
@@ -431,11 +469,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = "";
   }
 
-  // Open lightbox on gallery item click
-  galleryItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      openLightbox(item.dataset.lightbox, item.dataset.type || "image");
-    });
+  // Open lightbox on gallery item click (event delegation - works for the
+  // dynamically-rendered gallery items too, no matter how many exist)
+  galleryGrid?.addEventListener("click", (e) => {
+    const item = e.target.closest(".gallery-item[data-lightbox]");
+    if (!item) return;
+    openLightbox(item.dataset.lightbox, item.dataset.type || "image");
   });
 
   // Close buttons in lightbox

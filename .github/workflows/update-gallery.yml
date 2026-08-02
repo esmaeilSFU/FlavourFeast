@@ -1,0 +1,35 @@
+name: Update gallery data
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "assets/images/**"
+      - "assets/videos/**"
+      - "scripts/generate-gallery-data.js"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate gallery-data.js
+        run: node scripts/generate-gallery-data.js
+
+      - name: Commit updated gallery-data.js if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- gallery-data.js; then
+            echo "No gallery changes to commit."
+            exit 0
+          fi
+          git add gallery-data.js
+          git commit -m "chore: auto-update gallery-data.js [skip ci]"
+          git push
