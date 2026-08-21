@@ -7,10 +7,12 @@ and `assets/videos/*`.
 
 ## To add or remove gallery photos/videos
 
-1. Add or delete files inside `assets/images/<FolderName>/` (any `.jpg`) or
-   `assets/videos/` (`.mp4`, with a matching thumbnail in
-   `assets/videos/thumbnail/<same-name>.png`).
-2. Commit and push to `main` as usual.
+1. Add or delete files inside `assets/images/<FolderName>/` (`.jpg`, `.jpeg`,
+  `.png`, or `.webp`) or `assets/videos/` (`.mp4`, with a matching thumbnail
+  in `assets/videos/thumbnail/<same-name>.png`).
+2. Keep the VS Code task `Watch gallery assets` running. It starts when this
+  workspace opens and regenerates `gallery-data.js` automatically.
+3. Commit and push to `main` as usual.
 
 That's it. `.github/workflows/update-gallery.yml` runs automatically on
 that push, regenerates `gallery-data.js`, and commits it back — the live
@@ -26,3 +28,5 @@ Notes:
   (`node scripts/generate-gallery-data.js`) to see the skip warning.
 - The `assets/images/hero` folder is excluded (site chrome, not gallery
   content).
+- If the watcher is not running, start it manually with
+  `node scripts/watch-gallery-data.js`.
