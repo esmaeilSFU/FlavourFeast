@@ -85,6 +85,26 @@ window.FLAVOURFEAST_GALLERY_ITEMS = [
   },
   {
     "type": "image",
+    "src": "assets/images/GeneralPhotos/16.jpg",
+    "alt": "General photo 17"
+  },
+  {
+    "type": "image",
+    "src": "assets/images/GeneralPhotos/17.jpg",
+    "alt": "General photo 18"
+  },
+  {
+    "type": "image",
+    "src": "assets/images/GeneralPhotos/18.jpg",
+    "alt": "General photo 19"
+  },
+  {
+    "type": "image",
+    "src": "assets/images/GeneralPhotos/19.jpg",
+    "alt": "General photo 20"
+  },
+  {
+    "type": "image",
     "src": "assets/images/FeastRoyal/1.jpg",
     "alt": "Feast Royal catering photo 1"
   },
@@ -278,6 +298,12 @@ window.FLAVOURFEAST_GALLERY_ITEMS = [
     "type": "video",
     "src": "assets/videos/6.mp4",
     "previewSrc": "assets/videos/thumbnail/6.png",
+    "alt": "Video preview"
+  },
+  {
+    "type": "video",
+    "src": "assets/videos/7.mp4",
+    "previewSrc": "assets/videos/thumbnail/7.png",
     "alt": "Video preview"
   }
 ];
